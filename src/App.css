@@ -1,0 +1,333 @@
+.app {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: #c5c9e0;
+  margin-bottom: 30px;
+}
+
+/* choice buttons */
+.choices {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.choice-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 120px;
+  padding: 18px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s, background-color 0.2s, border-color 0.2s;
+}
+
+.choice-btn .icon {
+  font-size: 2.5rem;
+  transition: transform 0.2s;
+}
+
+.choice-btn:hover:not(:disabled) {
+  transform: translateY(-6px);
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: #ffd166;
+}
+
+.choice-btn:hover:not(:disabled) .icon {
+  transform: rotate(-15deg) scale(1.15);
+}
+
+.choice-btn:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.choice-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.choice-btn.selected {
+  border-color: #ffd166;
+  background-color: rgba(255, 209, 102, 0.2);
+}
+
+/* result area */
+.board {
+  margin-top: 35px;
+  padding: 25px 20px;
+  min-height: 285px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+}
+
+.players {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player h3 {
+  margin: 0 0 10px;
+  color: #c5c9e0;
+  font-weight: 500;
+}
+
+.player p {
+  margin: 10px 0 0;
+  font-weight: 600;
+}
+
+.hand {
+  width: 90px;
+  height: 90px;
+  line-height: 90px;
+  margin: 0 auto;
+  font-size: 3rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+}
+
+.vs {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #ffd166;
+}
+
+.hand {
+  transition: box-shadow 0.3s, background-color 0.3s;
+}
+
+/* the computer hand looks at the player */
+.hand.computer {
+  transform: scaleX(-1);
+}
+
+.hand.shake {
+  animation: shake 0.4s ease-in-out infinite;
+}
+
+.hand.computer.shake {
+  animation-name: shake-computer;
+}
+
+.hand.winner {
+  background-color: rgba(6, 214, 160, 0.25);
+  box-shadow: 0 0 0 3px #06d6a0, 0 0 20px rgba(6, 214, 160, 0.6);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-18px);
+  }
+}
+
+@keyframes shake-computer {
+  0%,
+  100% {
+    transform: scaleX(-1) translateY(0);
+  }
+  50% {
+    transform: scaleX(-1) translateY(-18px);
+  }
+}
+
+.explanation {
+  margin: 6px 0 0;
+  color: #c5c9e0;
+}
+
+/* score */
+.scoreboard {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.score-item {
+  display: flex;
+  flex-direction: column;
+  min-width: 90px;
+  padding: 10px 15px;
+  background-color: rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.score-number {
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.score-number.win,
+.badge.win {
+  color: #06d6a0;
+}
+
+.score-number.lose,
+.badge.lose {
+  color: #ef476f;
+}
+
+.score-number.draw,
+.badge.draw {
+  color: #ffd166;
+}
+
+.score-label {
+  font-size: 0.85rem;
+  color: #c5c9e0;
+}
+
+/* buttons under the board */
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.reset-btn.secondary {
+  color: #fff;
+  background-color: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+}
+
+.reset-btn.secondary:hover:not(:disabled) {
+  border-color: #ef476f;
+  box-shadow: 0 5px 15px rgba(239, 71, 111, 0.3);
+}
+
+/* history */
+.history {
+  margin-top: 35px;
+  text-align: left;
+}
+
+.history h2 {
+  font-size: 1.1rem;
+  color: #c5c9e0;
+  font-weight: 500;
+}
+
+.history ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.history li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  margin-bottom: 8px;
+  font-size: 1.2rem;
+  background-color: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  animation: slide 0.3s ease-out;
+}
+
+.badge {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+@keyframes slide {
+  from {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.result {
+  margin: 25px 0 0;
+  font-size: 1.6rem;
+  font-weight: bold;
+  animation: pop 0.3s ease-out;
+}
+
+.result.win {
+  color: #06d6a0;
+}
+
+.result.lose {
+  color: #ef476f;
+}
+
+.result.draw {
+  color: #ffd166;
+}
+
+@keyframes pop {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* reset button */
+.reset-btn {
+  margin-top: 25px;
+  padding: 12px 35px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1f2a48;
+  background-color: #ffd166;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.reset-btn:hover:not(:disabled) {
+  transform: scale(1.07);
+  box-shadow: 0 5px 15px rgba(255, 209, 102, 0.4);
+}
+
+.reset-btn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+@media (max-width: 450px) {
+  .choice-btn {
+    width: 95px;
+  }
+
+  .hand {
+    width: 70px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 2.3rem;
+  }
+}
